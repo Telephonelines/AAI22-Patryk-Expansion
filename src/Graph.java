@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Graph {
 
-    LinkedList graph [];
+    LinkedList[] graph;
     boolean directed;
 
     public Graph(int N){
@@ -28,23 +28,44 @@ public class Graph {
     }
 
     public boolean hasEdge(int v, int u){
+        if(validVertex(v) || validVertex(u)){
+            System.out.println("Vertex not valid");
+            System.exit(1);
+        }
         return graph[v].contains(u);
     }
 
     public LinkedList neighbours(int v){
+        if(validVertex(v)){
+            System.out.println("Vertex not valid");
+            System.exit(1);
+        }
         return graph[v];
+
     }
 
     public void addEdge(int v, int u){
+        if(validVertex(v) || validVertex(u)){
+            System.out.println("Vertex not valid");
+            System.exit(1);
+        }
         graph[v].add(u);
         if(!directed) {
             graph[u].add(v);
         }
     }
 
+    private boolean validVertex(int v){
+        return ((v < 0) || (v > size()));
+    }
+
     // public void removeEdge() ???
 
     public int degree(int v){
+        if(validVertex(v)){
+            System.out.println("Vertex not valid");
+            System.exit(1);
+        }
         return graph[v].size();
     }
 
