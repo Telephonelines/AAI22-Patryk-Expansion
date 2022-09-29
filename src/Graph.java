@@ -19,6 +19,10 @@ public class Graph {
         }
     }
 
+    public int size(){
+        return graph.length;
+    }
+
     public boolean isDirected(){
         return directed;
     }
