@@ -1,6 +1,9 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+
+
 
 public class BFS {
     Graph g;
@@ -12,11 +15,26 @@ public class BFS {
     }
 
     public List<Integer> search(){
-        List visited = new ArrayList(g.size());
+        boolean [] visited = new boolean[g.size()];
+        ArrayList<Integer> reach = new ArrayList<>();
 
+        List<Integer> q = new LinkedList<>();
+        visited[root] = true;
+        q.add(root);
 
+        while (!(q.isEmpty())){
+            int v = q.remove(0);
+            reach.add(v);
 
-        return visited;
+            for(int u : g.neighbours(v)){
+                if(!visited[u]){
+                    visited[u] = true;
+                    q.add(u);
+                }
+            }
+        }
+
+        return reach;
     }
 
 
@@ -34,8 +52,7 @@ public class BFS {
 
         List<Integer> visited = bfs.search();
 
-        for(Integer i : visited){
-            System.out.print(visited + ", ");
-        }
+        System.out.print(visited);
+
     }
 }

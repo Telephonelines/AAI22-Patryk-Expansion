@@ -35,7 +35,7 @@ public class Graph {
         return graph[v].contains(u);
     }
 
-    public LinkedList neighbours(int v){
+    public LinkedList<Integer> neighbours(int v){
         if(validVertex(v)){
             System.out.println("Vertex not valid");
             System.exit(1);
