@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Graph {
 
-    LinkedList[] graph;
+    LinkedList<Integer>[] graph;
     boolean directed;
 
     public Graph(int N){
@@ -15,7 +15,7 @@ public class Graph {
         this.directed = directed;
 
         for (int i = 0; i < graph.length; i++){
-            graph[i] = new LinkedList<Integer>();
+            graph[i] = new LinkedList<>();
         }
     }
 
