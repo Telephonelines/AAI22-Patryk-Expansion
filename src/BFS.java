@@ -3,13 +3,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-
-
 public class BFS {
     Graph g;
     int root;
 
-    public BFS(Graph g, int root){
+    public BFS(Graph g, int root) {
         this.g = g;
         this.root = root;
     }
@@ -26,17 +24,16 @@ public class BFS {
             int v = q.remove(0);
             reach.add(v);
 
-            for(int u : g.neighbours(v)){
+            for(Edge e : g.neighbours(v)){
+                int u = e.to();
                 if(!visited[u]){
                     visited[u] = true;
                     q.add(u);
                 }
             }
         }
-
         return reach;
     }
-
 
     public static void main(String[] args) {
         Graph g = new Graph(20);
@@ -45,7 +42,8 @@ public class BFS {
         for(int i = 0; i < 40; i++){
             int v = r.nextInt(20);
             int u = r.nextInt(20);
-            g.addEdge(v, u);
+            int w = r.nextInt(100);
+            g.addEdge(v, u, w);
         }
 
         BFS bfs = new BFS(g, r.nextInt(20));
