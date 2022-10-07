@@ -3,13 +3,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-
-
 public class DFS {
     Graph g;
     int root;
 
-    public DFS(Graph g, int root){
+    public DFS(Graph g, int root) {
         this.g = g;
         this.root = root;
     }
@@ -26,14 +24,14 @@ public class DFS {
             int v = q.remove(0);
             reach.add(v);
 
-            for(int u : g.neighbours(v)){
+            for(Edge e : g.neighbours(v)){
+                int u = e.to();
                 if(!visited[u]){
                     visited[u] = true;
-                    q.add(0,u);
+                    q.add(0, u);
                 }
             }
         }
-
         return reach;
     }
 
@@ -45,12 +43,13 @@ public class DFS {
         for(int i = 0; i < 40; i++){
             int v = r.nextInt(20);
             int u = r.nextInt(20);
-            g.addEdge(v, u);
+            int w = r.nextInt(100);
+            g.addEdge(v, u, w);
         }
 
-        BFS bfs = new BFS(g, r.nextInt(20));
+        DFS dfs = new DFS(g, r.nextInt(20));
 
-        List<Integer> visited = bfs.search();
+        List<Integer> visited = dfs.search();
 
         System.out.print(visited);
 
