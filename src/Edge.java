@@ -31,4 +31,10 @@ public class Edge implements Comparable<Edge>{
         if(this.weight > other.weight) return +1;
         return 0;
     }
+    
+    private class WeightOrder implements Comparator<Edge> {
+        public int compare(Edge e1, Edge e2) {
+            return e1.compareTo(e2);
+        }
+    }
 }
