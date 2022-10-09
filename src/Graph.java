@@ -3,6 +3,7 @@ import java.util.*;
 public class Graph {
     LinkedList<Edge>[] graph;
     boolean directed;
+    static int count = 0;
 
     public Graph(int N) {
         this(N, false);
@@ -64,6 +65,7 @@ public class Graph {
             // Collections remove... cool thing!
             e_list.removeIf(e -> e.from() == v && e.to() == u);
         }
+        count--;
     }
 
     public void addEdge(int v, int u, int weight) {
@@ -74,7 +76,9 @@ public class Graph {
         graph[v].add(new Edge(v, u, weight));
         if (!isDirected()) {
             graph[u].add(new Edge(u, v, weight));
+            count++;
         }
+        count++;
     }
 
     public boolean validVertex(int v) {
@@ -90,6 +94,10 @@ public class Graph {
 
     public LinkedList<Edge>[] getGraph() {
         return graph;
+    }
+
+    public int countEdges() {
+        return count;
     }
 
     public static void main(String[] args) {
