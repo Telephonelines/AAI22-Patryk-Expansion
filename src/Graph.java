@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class Graph {
     LinkedList<Edge>[] graph;
     boolean directed;
@@ -61,9 +59,16 @@ public class Graph {
             System.out.println("Vertex not valid");
             System.exit(1);
         }
+        if(!hasEdge(v,u)) {
+            System.out.println("Edge not valid");
+            System.exit(1);
+        }
         for (LinkedList<Edge> e_list : graph) {
             // Collections remove... cool thing!
-            e_list.removeIf(e -> e.from() == v && e.to() == u);
+            e_list.removeIf(e -> (e.from() == v && e.to() == u ) || (!isDirected() && (e.to() == v && e.from() == u)));
+        }
+        if (!isDirected()) {
+            count--;
         }
         count--;
     }
@@ -99,7 +104,7 @@ public class Graph {
     public int countEdges() {
         return count;
     }
-
+    
     public static void main(String[] args) {
         Graph g = new Graph(100, false);
         Random r = new Random();
