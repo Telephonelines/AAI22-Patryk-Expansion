@@ -6,6 +6,7 @@ public class Graph {
     public Graph(int N) {
         this(N, false);
     }
+    
     public Graph(int N, boolean directed) {
         graph = new LinkedList[N];
         this.directed = directed;
