@@ -12,7 +12,6 @@ public class Kruskal {
         QuickUnionUFWeighting set = new QuickUnionUFWeighting(g.size());
         int i = 0;
         Edge[] ordered_edge = new Edge[g.countEdges()];
-        System.out.println(g.countEdges());
         Graph mst = new Graph(g.size(), g.isDirected());
         for (LinkedList<Edge> e_list : g.getGraph()) {
             for (Edge e : e_list) {
