@@ -1,4 +1,6 @@
 public class Edge implements Comparable<Edge>{
+    public final Comparator<Edge> WEIGHT_ORDER = new WeightOrder();
+    
     int from;
     int to;
     int weight;
