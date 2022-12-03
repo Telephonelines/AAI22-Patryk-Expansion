@@ -1,7 +1,7 @@
 public class Graph {
     LinkedList<Edge>[] graph;
     boolean directed;
-    static int count = 0;
+    int count = 0;
 
     public Graph(int N) {
         this(N, false);
